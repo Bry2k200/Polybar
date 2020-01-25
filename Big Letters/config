@@ -1,0 +1,211 @@
+; vim:ft=cfg
+
+;--------------------------------------------
+; bars                                      ;
+;--------------------------------------------
+
+[bar/top]
+        monitor = HDMI-1
+	width    = 3%
+	height   = 15
+	offset-x = 1840
+	offset-y = 0
+
+	bottom = false
+
+	background = #00f3f8fa
+	; #000f0f0f
+	foreground = #958E9A
+
+	border-top-size     = 6
+	border-bottom-size  = 6
+	border-top-color    = #00f3f8fa
+	border-bottom-color = #00f3f8fa
+	; #000f0f0f
+
+	spacing            = 0
+	padding-left       = 2
+	padding-right      = 1
+	module-margin-left = 10
+
+	font-0 = "fontawesome:size=8;4"
+	font-1 = "Iosevka Nerd Font:size=13;4"
+	font-2 = "WunconSiji:size=12;3"
+	font-3 = "Material Icons:size=14;4"
+
+	modules-left   = 
+	modules-center = 
+	modules-right  = music
+
+	tray-padding = 2
+	tray-transparent = false
+
+	fixed-center = true
+	override-redirect = false
+    	; wm-restack   = bspwm 
+
+;--------------------------------------------
+; modules                                   ;
+;--------------------------------------------
+
+[module/date]
+	type     = internal/date
+	interval = 1.0
+	date     = %A, %d %B 
+	date-alt =  [ %a %d, %b |
+	time     = " %I:%M %p "
+	time-alt = %H:%M:%S ]
+	label    = %date% %time%
+
+	;format         = <label>
+	;format-padding = 0
+
+	;format-prefix            = 
+	format-prefix-background = 
+	format-prefix-foreground = #958E9A
+        label-background = 
+	;format-prefix-padding    = 1
+
+[module/music]
+	type = internal/mpd
+
+	host = 127.0.0.1
+	port = 6600
+
+	interval = 2
+
+	format-online = <icon-prev> <toggle> <icon-next> 
+
+	label-song         = %title%
+	label-song-padding = 1
+        icon-play = 
+        icon-play-background = #00f3f3f8
+        icon-play-foreground = #ffffff
+        icon-pause = 
+        icon-pause-background = #00f3f3f8
+        icon-pause-foreground = #ffffff
+        icon-prev = 
+        icon-prev-background = #00f3f3f8
+        icon-prev-foreground = #ffffff
+        icon-next = 
+        icon-next-background = #00f3f3f8
+        icon-next-foreground = #ffffff
+
+	label                 = "%output:0:45:...%"
+	label-song-background = #00f3f3f8
+	label-song-foreground = #ffffff
+	label-padding-right   = 1
+
+	icon-stop            = 
+	icon-stop-padding    = 1
+
+	format-online-prefix-padding = 1
+
+	click-left   = playerctl previous
+	click-middle = playerctl play-pause
+	click-right  = playerctl next
+
+[module/google]
+	type = custom/text
+	content = 
+	content-padding = 2
+	content-background = #00f3f3f8
+	content-foreground = #a3be8c
+	click-left = xdg-open https://www.google.com/ 
+
+[module/github]
+	type = custom/text
+	content = 
+	content-padding = 2
+	content-background = #00f3f3f8
+	content-foreground = #668192
+	click-left = xdg-open https://www.github.com/ 
+
+[module/reddit]
+	type = custom/text
+	content = 
+	content-padding = 2
+	content-background = #00f3f3f8
+	content-foreground = #dd6b53
+	click-left = xdg-open https://www.reddit.com/
+
+[module/youtube]
+	type = custom/text
+	content = 
+	content-padding = 2
+	content-background = #00f3f3f8
+	content-foreground = #e72238
+	click-left = xdg-open https://www.youtube.com/
+
+[module/files]
+	type = custom/text
+	content = 
+	content-padding = 1
+	content-foreground = #6aacca
+	click-left = thunar &
+	click-right = pcmanfm &
+
+[module/term]
+	type = custom/text
+	content = 
+	content-foreground = #958E9A
+	click-left = sakura &
+	click-right = urxvt &
+
+[module/ncmpcpp]
+	type = custom/text
+	content = 
+	content-padding = 1
+	content-foreground = #dbbb7b
+	click-left = urxvt -e ncmpcpp &
+	click-right = gmpc &
+
+[module/settings]
+	type = custom/text
+	content = 
+	content-padding = 1
+	content-foreground = #dbbb7b
+	click-left = lxappearance &
+	click-right = xfce4-settings-manager &
+
+[bar/bottom]
+        monitor = HDMI-1
+	width    = 100%
+	height   = 20
+	offset-x = 0
+	offset-y = 0
+
+	bottom = true
+
+	background = #00f3f8fa
+	; #000f0f0f
+	foreground = #958E9A
+
+	border-top-size     = 6
+	border-bottom-size  = 6
+	border-top-color    = #00f3f8fa
+	border-bottom-color = #00f3f8fa
+	; #000f0f0f
+
+	spacing            = 0
+	padding-left       = 2
+	padding-right      = 1
+	module-margin-left = 10
+
+	font-0 = "fontawesome:size=8;4"
+	font-1 = "Iosevka Nerd Font:size=13;4"
+	font-2 = "WunconSiji:size=6;3"
+	font-3 = "Material Icons:size=14;4"
+	font-4 = "Roboto:pixelsize=9;2"
+
+	modules-left   = 
+	modules-center = google reddit youtube files term ncmpcpp
+	modules-right  = 
+
+	tray-padding = 2
+	tray-transparent = false
+
+	fixed-center = true
+	override-redirect = false
+    	; wm-restack   = bspwm 
+;
